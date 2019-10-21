@@ -1,0 +1,39 @@
+body {
+    background-color: lime;
+}
+
+h1 {
+    text-align: center;
+    background-color: white;
+    color: green;
+    padding: 1em;
+    margin: 0;
+}
+
+.navbars {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbars nav ul {
+    margin: 0;
+}
+
+.navbars nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.navbars nav * {
+    padding: 0.5em;
+    background-color: white;
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login {
+    color: black;
+}
