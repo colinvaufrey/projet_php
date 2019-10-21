@@ -15,7 +15,7 @@ CREATE TABLE Cart(
 );
 CREATE TABLE Users(
     username STRING,
-    password STRING,
+    password BINARY[60],
     myCart INTEGER,
     FOREIGN KEY (myCart) REFERENCES Cart(ref)
 );
