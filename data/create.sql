@@ -5,13 +5,15 @@ CREATE TABLE Cart(
 );
 CREATE TABLE Users(
   username STRING,
-  password HASH
-  myCart INTEGER FOREIGN KEY REFERENCES Cart(ref),
+  password STRING,
+  myCart INTEGER FOREIGN KEY REFERENCES Cart(ref)
 );
 CREATE TABLE Products(
   ref INTEGER PRIMARY KEY,
-  img TEXT,
   title TEXT,
+  img TEXT,
   description TEXT,
-  prix REAL
+  prix REAL,
+  color STRING,
+  origin STRING
 );
