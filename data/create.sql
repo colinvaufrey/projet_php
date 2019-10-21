@@ -10,7 +10,7 @@ CREATE TABLE Users(
 );
 CREATE TABLE Products(
     ref INTEGER PRIMARY KEY,
-    title TEXT,
+    title STRING,
     img TEXT,
     description TEXT,
     prix REAL,
