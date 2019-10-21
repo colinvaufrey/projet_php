@@ -1,13 +1,3 @@
-CREATE TABLE Cart(
-    ref INTEGER,
-    refProduct INTEGER FOREIGN KEY REFERENCES Products(ref),
-    quantity INTEGER
-);
-CREATE TABLE Users(
-    username STRING,
-    password STRING,
-    myCart INTEGER FOREIGN KEY REFERENCES Cart(ref)
-);
 CREATE TABLE Products(
     ref INTEGER PRIMARY KEY,
     title STRING,
@@ -16,4 +6,16 @@ CREATE TABLE Products(
     prix REAL,
     color STRING,
     origin STRING
+);
+CREATE TABLE Cart(
+    ref INTEGER,
+    refProduct INTEGER,
+    quantity INTEGER,
+    FOREIGN KEY (refProduct) REFERENCES Products(ref)
+);
+CREATE TABLE Users(
+    username STRING,
+    password STRING,
+    myCart INTEGER,
+    FOREIGN KEY (myCart) REFERENCES Cart(ref)
 );
