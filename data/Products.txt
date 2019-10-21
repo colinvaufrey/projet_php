@@ -1,1 +1,4 @@
 1|Pomme Verte|https://www.wenzeasy.com/wp-content/uploads/2019/03/pomme-verte-pc-1.jpg |Delicieuse et fruitée (c'est le cas de le dire !)|2.99|verte|france
+2|Pomme Rouge|https://www.wenzeasy.com/wp-content/uploads/2019/03/pomme-rouge-pc.jpg |Degoutante et rouge (c'est dommage...)|0.01|rouge|tchernobyl
+3|citron|https://www.wenzeasy.com/wp-content/uploads/2019/03/citron-1pc-1.jpg |Acide|jaune|la-bas
+4|Pastèque|https://www.wenzeasy.com/wp-content/uploads/2019/03/pasteque-wenzeasy.jpg |Juteuse|rouge et verte|espagne
