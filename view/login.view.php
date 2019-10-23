@@ -6,22 +6,7 @@
         <title>EF - Se connecter</title>
     </head>
     <body>
-        <h1>ÊtreFruits</h1>
-        <div class="navbars">
-            <nav>
-                <ul>
-                    <a href="#"><li>Page Principale</li></a>
-                    <a href="#"><li>Catalogue</li></a>
-                    <a href="#"><li>Mon Panier</li></a>
-                </ul>
-            </nav>
-            <nav>
-                <ul>
-                    <a href="#" class="login"><li>Anonyme</li></a>
-                    <a href="#"><li>Se connecter</li></a>
-                </ul>
-            </nav>
-        </div>
+        <?php include("menu.view.php") ?>
 
         <article class="main">
             <section>
