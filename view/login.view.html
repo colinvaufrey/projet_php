@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./design/style.css">
-        <title>ÊtreFruits</title>
+        <title>EF - Se connecter</title>
     </head>
     <body>
         <h1>ÊtreFruits</h1>
@@ -17,7 +17,7 @@
             </nav>
             <nav>
                 <ul>
-                    <a href="#"><li>Anonyme</li></a>
+                    <a href="#" class="login"><li>Anonyme</li></a>
                     <a href="#"><li>Se connecter</li></a>
                 </ul>
             </nav>
@@ -25,7 +25,18 @@
 
         <article class="main">
             <section>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <form class="login" action="login.ctrl.php" method="post">
+                    <legend>Se connecter</legend>
+                    <div class="form_item">
+                        <label for="id">Identifiant</label>
+                        <input id="id" type="text" name="id">
+                    </div>
+                    <div class="form_item">
+                        <label for="pw">Mot de passe</label>
+                        <input id="pw" type="password" name="pw">
+                    </div>
+                    <input type="submit" name="submit" value="Valider">
+                </form>
             </section
         </article>
     </body>
