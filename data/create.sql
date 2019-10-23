@@ -5,17 +5,22 @@ CREATE TABLE Products(
     description TEXT,
     prix REAL,
     color STRING,
-    origin STRING
+    origin STRING,
+    stock INTEGER
 );
-CREATE TABLE Cart(
-    ref INTEGER,
+CREATE TABLE CartItem(
+    username STRING,
     refProduct INTEGER,
     quantity INTEGER,
-    FOREIGN KEY (refProduct) REFERENCES Products(ref)
+    FOREIGN KEY (refProduct) REFERENCES Products(ref),
+    PRIMARY KEY (username, refProduct)
 );
 CREATE TABLE Users(
     username STRING,
-    password BINARY[60],
-    myCart INTEGER,
-    FOREIGN KEY (myCart) REFERENCES Cart(ref)
+    password BINARY[60]
 );
+
+
+.separator |
+.import Products.txt Products
+.import Users.txt Users
