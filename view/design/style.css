@@ -35,7 +35,7 @@ h1 {
 .navbars>nav>ul>a {
     padding: 1em;
     background-color: rgba(255,248,183,0.9);
-    color: #CCBA00;
+    color: #5D5500;
     text-decoration: none;
     font-weight: bold;
 }
@@ -52,6 +52,17 @@ h1 {
     color: #FFF8B7;
     background-color: #5D5500;
 }
+
+article {
+    color: rgba(26, 80, 0, 1);
+    background-color: rgba(202, 250, 179, 0.7);
+    text-align: center;
+    padding: 1em;
+    margin: 0;
+    margin-top: 2em;
+    border-radius: 20px;
+}
+
 
 form {
     color: rgba(93, 49, 0, 1);
