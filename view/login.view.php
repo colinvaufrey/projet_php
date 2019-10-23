@@ -24,5 +24,7 @@
                 </form>
             </section
         </article>
+
+        <?php include("footer.view.php") ?>
     </body>
 </html>

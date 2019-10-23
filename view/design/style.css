@@ -109,6 +109,17 @@ form>input[type="submit"]:hover {
     border: 0.2em solid rgba(204, 108, 0, 0.5);
 }
 
+footer {
+    color: #5D5500;
+    font-weight: bold;
+    background-color: rgba(255,248,183,0.9);
+    text-align: center;
+    padding: 1em;
+    margin: 0;
+    margin-top: 2em;
+    border-radius: 20px;
+}
+
 /* COULEURS :
 *** Primary color : JAUNE
    shade 0 = #FFE90A = rgb(255,233, 10) = rgba(255,233, 10,1) = rgb0(1,0.914,0.039)
