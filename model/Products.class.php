@@ -7,6 +7,7 @@
         public $prix;
         public $color;
         public $origin;
+        public $stock;
         function __construct(){
             $this->ref = intval($this->ref);
         }
