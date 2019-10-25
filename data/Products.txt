@@ -1,4 +1,10 @@
 1|Pomme Verte|https://www.wenzeasy.com/wp-content/uploads/2019/03/pomme-verte-pc-1.jpg |Delicieuse et fruitée (c'est le cas de le dire !)|2.99|verte|france|50
 2|Pomme Rouge|https://www.wenzeasy.com/wp-content/uploads/2019/03/pomme-rouge-pc.jpg |Degoutante et rouge (c'est dommage...)|0.01|rouge|tchernobyl|20
-3|citron|https://www.wenzeasy.com/wp-content/uploads/2019/03/citron-1pc-1.jpg |Acide|2.80|jaune|la-bas|1
+3|Citron|https://www.wenzeasy.com/wp-content/uploads/2019/03/citron-1pc-1.jpg |Acide|2.80|jaune|la-bas|1
 4|Pastèque|https://www.wenzeasy.com/wp-content/uploads/2019/03/pasteque-wenzeasy.jpg |Juteuse|2.95|rouge et verte|espagne|0
+5|Banane|https://www.wenzeasy.com/wp-content/uploads/2019/03/banane-pc-2.jpg |Bananesque|2.96|jaune|espagne|50
+6|Orange|https://www.wenzeasy.com/wp-content/uploads/2019/03/orange-1pcs.jpg |Fruitée|2.97|orange|France|12548453
+7|Ananas|https://www.wenzeasy.com/wp-content/uploads/2019/03/ananas-wenzeasy.jpg |ananasesque|6|jaune|France|3
+8|Mandarine|https://www.wenzeasy.com/wp-content/uploads/2019/03/mandarine-wenzeasy.jpg |Le plein de vitamine|1.85|orange|France|5423552
+9|Papaye|https://www.wenzeasy.com/wp-content/uploads/2019/03/Papaye-wenzeasy.jpg |Wahoo|4.5|orange et vert|France|4510
+10|Cerise|https://www.tompress.com/I-Grande-16515-recette-de-confiture-de-cerise-maison.net.jpg |C'est bon|2.58|rouge-violet|France|14587

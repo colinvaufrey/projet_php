@@ -8,6 +8,10 @@ CREATE TABLE Products(
     origin STRING,
     stock INTEGER
 );
+CREATE TABLE Users(
+    username STRING,
+    password BINARY[60]
+);
 CREATE TABLE CartItem(
     username STRING,
     refProduct INTEGER,
@@ -15,11 +19,6 @@ CREATE TABLE CartItem(
     FOREIGN KEY (refProduct) REFERENCES Products(ref),
     PRIMARY KEY (username, refProduct)
 );
-CREATE TABLE Users(
-    username STRING,
-    password BINARY[60]
-);
-
 
 .separator |
 .import Products.txt Products
