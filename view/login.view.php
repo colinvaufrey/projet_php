@@ -9,7 +9,7 @@
     <body>
         <?php include("menu.view.php") ?>
 
-        <form class="login" action="login.ctrl.php" method="post">
+        <form class="login" action="../controler/login.ctrl.php" method="post">
             <legend>Se connecter</legend>
             <div class="form_item">
                 <label for="id">Identifiant</label>
