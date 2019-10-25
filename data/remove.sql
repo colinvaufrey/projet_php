@@ -1,0 +1,3 @@
+DROP TABLE CartItem;
+DROP TABLE Users;
+DROP TABLE Products;
