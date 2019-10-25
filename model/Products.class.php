@@ -8,8 +8,8 @@
         public $color;
         public $origin;
         public $stock;
-        function __construct(){
-            $this->ref = intval($this->ref);
+        function __construct(int $ref){
+            $this->ref = $ref;
         }
     }
 ?>
