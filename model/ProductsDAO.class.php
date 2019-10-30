@@ -13,8 +13,16 @@
             }
         }
         function get(int $ref):Products{
-            $res = $this->db->query("SELECT * FROM Products WHERE ref='$ref'");
-            $Products = $res->fetchAll(PDO::FETCH_CLASS,"Products");
+
+            // A TESTER //
+            /* Exécute une requête préparée en en liant une variable PHP */
+            $sql = 'SELECT * FROM Products WHERE ref='?''; // requête (double ou simple quotes ?)
+            $sth = $this->db->prepare($sql); // début de la préparation
+            $sth->bindParam(1, $ref, PDO::PARAM_INT); // sécurisation du paramètre attendu (ici un int)
+            $sth->execute(); // exécution
+            $Products = $sth->fetchAll(PDO::FETCH_CLASS,"Products"); // retourne un élément de type Product (sous forme d'un tableau)
+            //          //
+
             return $Products[0];
         }
     }
