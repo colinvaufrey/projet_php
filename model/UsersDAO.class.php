@@ -49,7 +49,7 @@
             $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
             $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
             $sth->execute(); // exécution
-            $User->myCart = $sth->fetchAll(PDO::FETCH_CLASS,"CartItem"); // stockage dans User->myCart d'un tableau de CartItem (son panier)
+            $CartItem = $sth->fetchAll(PDO::FETCH_CLASS,"CartItem"); // retourne un élément de type CartItem (sous forme d'un tableau)
             //          //
 
             return $CartItem[0];
@@ -90,7 +90,7 @@
                 $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
                 $sth->execute(); // exécution
                 //          //
-                
+
             }
         }
     }
