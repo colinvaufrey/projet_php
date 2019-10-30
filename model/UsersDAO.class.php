@@ -14,14 +14,25 @@
         }
         function get(string $username):Users{
             //prepare (puis execute) au lieu de query
-            $res = $this->db->query("SELECT * FROM Users WHERE username='$username'");
-            $Users = $res->fetchAll(PDO::FETCH_CLASS,"Users");
+
+            // A TESTER //
+            /* Exécute une requête préparée en en liant une variable PHP */
+            $sql = 'SELECT * FROM Users WHERE username = ?'; // requête
+            $sth = $this->db->prepare($sql); // début de la préparation
+            $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre attendu (ici une string de 20 caractères)
+            $sth->execute(); // exécution
+            $Users = $sth->fetchAll(PDO::FETCH_CLASS,"Users"); // stockage dans Users
+            //          //
+
             $User = $Users[0];
+
             //récupération panier
+
             // A TESTER //
             $res = $this->db->query("SELECT * FROM CartItem WHERE username='$username'"); // $res prends la valeur du contenu du panier de l'utilisateur
             $User->myCart = $res->fetchAll(PDO::FETCH_CLASS,"CartItem"); // fetchAll transforme $res en tableau, et ce tableau est stocké dans l'attribut myCart
             //          //
+            
             return $User;
         }
         function getCartItem(int $refProduct, string $username):CartItem{
