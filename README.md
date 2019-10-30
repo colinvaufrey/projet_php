@@ -8,4 +8,4 @@ site Web de commerce en ligne style "Amazon".
 - Thibault GROOT
 - Colin VAUFREY
 
-Groupe A2
+Groupe A
