@@ -10,6 +10,6 @@
 
     $p = $product->get(1);
     var_dump($p);
-    $u = $user->get("username");
+    $u = $user->get("user");
     var_dump($u);
 ?>
