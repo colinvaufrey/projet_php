@@ -76,7 +76,7 @@
                 $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
                 $sth->execute(); // exécution
                 //          //
-                
+
             }
         }
         function removeCartItem(int $refProduct, string $username) {

@@ -8,8 +8,7 @@
         public $color;
         public $origin;
         public $stock;
-        function __construct(int $ref){
-            $this->ref = $ref;
+        function __construct() {
         }
     }
 ?>

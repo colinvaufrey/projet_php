@@ -24,5 +24,5 @@
     $view->assign('produits', $produits);
 
     // Charge la vue
-    $view->dump();
+    $view->display("main.view.php");
 ?>

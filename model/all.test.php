@@ -13,13 +13,13 @@
     var_dump($p);
     $p = $product->getProductsInStock();
     var_dump($p);
-    $p = $product->getProductsFromOrigin("france");
+    $p = $product->getProductsByOrigin("france");
     var_dump($p);
     $p = $product->getProductsByColor("rouge");
     var_dump($p);
-    $p = $product->getProductsByTheirPrices(0.02, 2.80);
+    $p = $product->getProductsByPrice(0.02, 2.80);
     var_dump($p);
-    $p = $product->getProductsByTheirTitle("et");
+    $p = $product->getProductsByTitle("et");
     var_dump($p);
     $u = $user->get("user");
     var_dump($u);
