@@ -7,7 +7,7 @@
 // mais sont visibles directement comme une variable locale
 // C'est correcte d'utiliser $this dans la vue mais ce n'est pas nécéssaire
 class View {
-  private $path=""; // Chemin vers le fichier de la vue
+  private $path = ""; // Chemin vers le fichier de la vue
 
   // Constructeur d'une vue
   function __construct(string $path="") {
