@@ -1,5 +1,5 @@
 <?php
-    class Products{
+    class Products {
         public $ref;
         public $title;
         public $img;
