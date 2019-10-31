@@ -5,7 +5,7 @@
 
         // Contructeur chargé d'ouvrir la base de données
         function __construct() {
-            $database = 'sqlite:../data/db/database.db';
+            $database = "sqlite:../data/db/database.db";
             try{
                 $this->db = new PDO($database);
             }

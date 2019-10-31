@@ -23,3 +23,4 @@ CREATE TABLE CartItem(
 .separator |
 .import Products.txt Products
 .import Users.txt Users
+.import CartItem.txt CartItem
