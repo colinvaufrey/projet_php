@@ -1,45 +1,50 @@
 <?php
 
 // Classe minimaliste pour normaliser l'usage d'une vue
-// Il faut passer les valeurs à la vue comme des attributs de
-// l'objet vue. C'est possible grâce aux modification dynamique du langage
-// Les paramètres de la vue sont des attributs de $this
-// mais sont visibles directement comme une variable locale
-// C'est correcte d'utiliser $this dans la vue mais ce n'est pas nécéssaire
+// Cette classe est inspiré du moteur et compilateur de template Smarty
 class View {
-  private $path = ""; // Chemin vers le fichier de la vue
+  // Paramètres de la vue, dans un tableau associatif
+  private $param;
 
   // Constructeur d'une vue
-  function __construct(string $path="") {
-    $this->path = $path;
+  function __construct() {
+    // Initialise un tableau vide de paramètres
+    $this->param = array();
   }
-  // Pour rendre plus joli le lancement de la vue
-  function show(string $path="") {
 
-    // prend l'attribut path de la vue si le paramètre est vide
-    $p = $path ? $path : $this->path;
+  // Ajoute une variable à la vue
+  function assign(string $varName,$value) {
+    $this->param[$varName] = $value;
+  }
 
-    // Ce test permet de donner le nom du fichier de la vue, sans indiquer le chemin
-    // Sauf si on indique le chemin en relatif ou absolue
-    if ($p[0] != '.' && $p[0] != '/') {
-      // Ajoute le chemin relatif
-      $p = "../view/".$p;
-    }
+  // Affiche la vue
+  function display(string $filename) {
+
+      // Ajoute le chemin relatif vers le fichier de la vue
+      $p = "../view/".$filename;
 
     // Tous les attributs de l'objet sont dupliqués en des variables
-    // locales à la fonction show. Cela simplifie l'expression des
+    // locales à la fonction display. Cela simplifie l'expression des
     // valeurs de la vue. Il faut simplement utiliser <?= $variable
 
-    // Parcourt tous les attributs de la vue
-    foreach ($this as $key => $value) {
+    // Parcourt toutes les variables de la vue
+    foreach ($this->param as $key => $value) {
       // La notation $$ dédigne une variable de le nom est dans une autre variable
-      $$key = $this->$key;
+      $$key = $value;
     }
 
     // Inclusion de la vue
     // Comme cette inclusion est dans la portée de la méthode show alors
     // seules les variables locales à show sont visibles.
     include($p);
+  }
+
+  // Affiche toutes les valeurs des paramètres de la vue
+  function dump() {
+    foreach ($this->param as $key => $value) {
+      print("<br/><b>$key: </b>\n");
+      var_dump($value);
+    }
   }
 }
 ?>
