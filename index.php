@@ -1,1 +1,4 @@
-<?php header("Location: view/main.view.php") ?>
+<?php
+// phpinfo();
+header("Location: controler/main.ctrl.php");
+?>
