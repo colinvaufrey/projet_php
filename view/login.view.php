@@ -21,7 +21,7 @@
             </div>
             <input type="submit" name="submit" value="Valider">
         </form>
-
+        <a href="../controler/createAccount.ctrl.php"></a>
         <?php include("footer.view.php") ?>
     </body>
 </html>
