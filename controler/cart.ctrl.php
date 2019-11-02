@@ -19,7 +19,7 @@
     $produits = $dao->getAll();
 
     // Passe les paramètres à la vue
-
+    
     // Charge la vue
-    $view->display("main.view.php");
+    $view->display("cart.view.php");
 ?>

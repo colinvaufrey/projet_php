@@ -11,6 +11,11 @@
 
         <article class="main">
             <section>
+                <?php foreach ($produits as $prod): ?>
+                    <div class="produit">
+                        <p> <?= $prod->title ?> </p>
+                    </div>
+                <?php endforeach; ?>
             </section>
         </article>
 

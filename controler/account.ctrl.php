@@ -21,5 +21,5 @@
     // Passe les paramètres à la vue
 
     // Charge la vue
-    $view->display("main.view.php");
+    $view->display("account.view.php");
 ?>

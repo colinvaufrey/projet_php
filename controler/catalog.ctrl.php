@@ -20,6 +20,9 @@
 
     // Passe les paramètres à la vue
 
+    // Les articles
+    $view->assign('produits', $produits);
+
     // Charge la vue
-    $view->display("main.view.php");
+    $view->display("catalog.view.php");
 ?>
