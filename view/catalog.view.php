@@ -10,11 +10,14 @@
         <?php include("menu.view.php") ?>
 
         <article class="main">
-            <section>
+            <section class="listeArticles">
                 <?php foreach ($produits as $prod): ?>
-                    <div class="produit">
-                        <p> <?= $prod->title ?> </p>
-                    </div>
+                    <a href="#">
+                        <div class="produit">
+                            <p> <?= $prod->title ?> </p>
+                            <img src="<?= $prod->img ?>" alt="Image de <?= $prod->title ?>">
+                        </div>
+                    </a>
                 <?php endforeach; ?>
             </section>
         </article>

@@ -63,6 +63,48 @@ article {
     border-radius: 20px;
 }
 
+.listeArticles {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.listeArticles .produit {
+    position: relative;
+    background-color: white;
+    margin: 1em;
+    padding: 2em;
+    border-radius: 20px;
+    width: 10em;
+    height: 10em;
+}
+
+.listeArticles .produit p {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0.4em 0.8em;
+    font-size: 1em;
+    color: rgba(26, 80, 0, 1);
+    font-weight: bold;
+    background-color: rgba(202, 250, 179, 0.7);
+    border-radius: 20px 0px 20px 0px;
+}
+
+.listeArticles .produit:hover p {
+    color: rgba(202, 250, 179, 1);
+    background-color: rgba(26, 80, 0, 0.7);
+}
+
+.listeArticles .produit img {
+    width: 10em;
+    height: auto;
+    text-align: center;
+}
+
 
 form {
     color: rgba(93, 49, 0, 1);
