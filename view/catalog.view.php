@@ -15,7 +15,9 @@
                     <a href="#">
                         <div class="produit">
                             <p> <?= $prod->title ?> </p>
-                            <img src="<?= $prod->img ?>" alt="Image de <?= $prod->title ?>">
+                            <div class="imgcontainer">
+                                <img src="<?= $prod->img ?>" alt="Image de <?= $prod->title ?>">
+                            </div>
                         </div>
                     </a>
                 <?php endforeach; ?>

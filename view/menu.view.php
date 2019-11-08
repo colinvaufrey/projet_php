@@ -1,4 +1,4 @@
-<h1>ÊtreFruits</h1>
+<a href="../"><h1>ÊtreFruits</h1></a>
 <div class="navbars">
     <nav>
         <ul>

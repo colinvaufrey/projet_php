@@ -6,6 +6,10 @@ body {
     background-size: 30%;
 }
 
+body>a {
+    text-decoration: none;
+}
+
 h1 {
     color: #5D5500;
     background-color: rgba(255,248,183,0.9);
@@ -99,12 +103,18 @@ article {
     background-color: rgba(26, 80, 0, 0.7);
 }
 
-.listeArticles .produit img {
-    width: 10em;
-    height: auto;
-    text-align: center;
+.listeArticles .produit .imgcontainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.listeArticles .produit .imgcontainer img {
+    width: 10em;
+    height: auto;
+}
 
 form {
     color: rgba(93, 49, 0, 1);
