@@ -7,12 +7,15 @@
         <title>ÊtreFruits</title>
     </head>
     <body>
-        <?php include("menu.view.php") ?>
-
+        <?php include("menu.view.php"); 
+        if($produit == "erreur"){
+            echo "<p>Une erreur est survenue, veuillez retourner sur la page principale et réessayer</p>";
+        } else {
+        ?>
         <article class="main">
             <section>
                 <article class="image">
-                    <img src="<?= $produit->img ?>" alt="Image de <?= $prod->title ?>">
+                    <img src="<?= $produit->img ?>" alt="Image de <?= $produit->title ?>">
                 </article>
                 <article class="titre, description, caractéristiques">
                     <h2><?= $produit->title ?></h2>
@@ -30,6 +33,6 @@
             </section>
         </article>
 
-        <?php include("footer.view.php") ?>
+        <?php } include("footer.view.php") ?>
     </body>
 </html>

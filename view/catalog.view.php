@@ -12,7 +12,7 @@
         <article class="main">
             <section class="listeArticles">
                 <?php foreach ($produits as $prod): ?>
-                    <a href="#">
+                    <a href="product.ctrl.php?ref=<?= $prod->ref ?>">
                         <div class="produit">
                             <p> <?= $prod->title ?> </p>
                             <div class="imgcontainer">
