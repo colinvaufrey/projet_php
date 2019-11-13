@@ -9,6 +9,8 @@
     include_once("../model/ProductsDAO.class.php");
     
     include_once("../model/Users.class.php");
+    include_once("../model/UsersDAO.class.php");
+
     session_start();
 
     // Creation de l'unique objet DAO

@@ -1,7 +1,7 @@
 <?php
     class CartItem {
         public $username;
-        public $reProduct;
+        public $refProduct;
         public $quantity;
         function __construct() {
         }

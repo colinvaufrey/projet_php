@@ -19,7 +19,7 @@
         <ul>
             <?php
                 if ($isLogged) {
-                    echo '<a href="../controler/cart.ctrl.php" class="login"><li>'.$username.'<span>Mon panier</span></li></a>';
+                    echo '<a href="../controler/cart.ctrl.php" class="login"><li>'.$username.'<span> Mon panier</span></li></a>';
                     echo '<a href="../controler/logout.ctrl.php"><li>Se déconnecter</li></a>';
                 } else {
                     echo '<a href="../controler/login.ctrl.php" class="login"><li>Anonyme</li></a>';
