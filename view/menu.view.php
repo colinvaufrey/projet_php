@@ -1,5 +1,19 @@
 <a href="../"><h1>ÊtreFruits</h1></a>
 <div class="navbars">
+    <?php
+        require_once("../model/Users.class.php");
+
+        session_start();
+
+        $isLogged = false;
+
+        if (isset($_SESSION["user"])) {
+            $username = $_SESSION["user"]->getUsername();
+            $isLogged = true;
+        } else {
+            $username = "Anonyme";
+        }
+    ?>
     <nav>
         <ul>
             <a href="../"><li>Page Principale</li></a>
@@ -9,8 +23,14 @@
     </nav>
     <nav>
         <ul>
-            <a href="../controler/account.ctrl.php" class="login"><li>Anonyme</li></a>
-            <a href="../controler/login.ctrl.php"><li>Se connecter</li></a>
+            <a href="../controler/account.ctrl.php" class="login"><li><?= $username ?></li></a>
+            <?php
+                if ($isLogged) {
+                    echo '<a href="../controler/logout.ctrl.php"><li>Se déconnecter</li></a>';
+                } else {
+                    echo '<a href="../controler/login.ctrl.php"><li>Se connecter</li></a>';
+                }
+            ?>
         </ul>
     </nav>
 </div>

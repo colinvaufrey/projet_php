@@ -15,7 +15,7 @@ class ProductsDAO {
         }
     }
 
-    function get(int $ref) : Products {
+    function get(int $ref) {
 
         // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
@@ -24,6 +24,10 @@ class ProductsDAO {
         $sth->bindParam(1, $ref, PDO::PARAM_INT); // sécurisation du paramètre attendu (ici un int)
         $sth->execute(); // exécution
         $Products = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un élément de type Product (sous forme d'un tableau)
+
+        if (count($Products) == 0) {
+            $Product = false;
+        }
 
         return $Products[0];
     }
