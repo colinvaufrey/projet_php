@@ -62,11 +62,18 @@
         }
 
         function removeUser(string $username, string $password){
-            $sql = 'DELETE FROM Users WHERE username= ? AND password = ?';
+            $sql = 'SELECT INTO Users WHERE username = ?';
             $sth = $this->db->prepare($sql);
             $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
-            $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
-            $sth->execute();
+            if ($sth->execute() == 1){
+                $sql = 'DELETE FROM Users WHERE username= ? AND password = ?';
+                $sth = $this->db->prepare($sql);
+                $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
+                $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
+                $sth->execute();
+            } else {
+                echo"<article>Utilisateur non existant</article>";
+            }
         }
 
         function getCartItem(int $refProduct, string $username) {
