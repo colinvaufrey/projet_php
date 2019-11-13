@@ -12,11 +12,7 @@
         <article class="main">
             <section class="listeArticles">
                 <?php foreach ($produits as $prod): ?>
-<<<<<<< HEAD
-                    <a href="product.ctrl.php?ref=<?= $prod->ref ?>">
-=======
                     <a href="../controler/product.ctrl.php?ref=<?= $prod->ref ?>">
->>>>>>> 3c676812e80d66db122a16c0f5fcbad267098ef0
                         <div class="produit">
                             <p> <?= $prod->title ?> </p>
                             <div class="imgcontainer">

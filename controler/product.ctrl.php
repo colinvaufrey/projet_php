@@ -19,12 +19,9 @@
     // récupérer $ref
     $ref = $_GET["ref"];
     $produit = $dao->get($ref);
-<<<<<<< HEAD
     if($produit == false){
         $produit = "erreur";
     }
-=======
->>>>>>> 3c676812e80d66db122a16c0f5fcbad267098ef0
 
     // Passe les paramètres à la vue
     $view->assign('produit', $produit);
