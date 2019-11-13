@@ -7,7 +7,7 @@
         <title>ÊtreFruits</title>
     </head>
     <body>
-        <?php include("menu.view.php"); 
+        <?php include("menu.view.php");
         if($produit == "erreur"){
             echo "<article>Une erreur est survenue, veuillez retourner sur la page principale et réessayer</article>";
         } else {
@@ -19,7 +19,7 @@
                 </article>
                 <article class="titreDescriptionCaractéristiques">
                     <h2><?= $produit->title ?></h2>
-                    <p><?= $produit->decription ?></p>
+                    <p><?= $produit->description ?></p>
                     <p>
                     Couleur : <?= $produit->color ?><br>
                     Origine : <?= $produit->origin ?><br>

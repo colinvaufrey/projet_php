@@ -8,6 +8,9 @@
     include_once("../model/Products.class.php");
     include_once("../model/ProductsDAO.class.php");
 
+    include_once("../model/Users.class.php");
+    session_start();
+
     // Creation de l'unique objet DAO
     $dao = new ProductsDAO();
 
@@ -19,7 +22,7 @@
     $produits = $dao->getAll();
 
     // Passe les paramètres à la vue
-    
+
     // Charge la vue
     $view->display("cart.view.php");
 ?>
