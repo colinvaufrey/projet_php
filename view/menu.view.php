@@ -1,10 +1,6 @@
 <a href="../"><h1>ÊtreFruits</h1></a>
 <div class="navbars">
     <?php
-        require_once("../model/Users.class.php");
-
-        session_start();
-
         $isLogged = false;
 
         if (isset($_SESSION["user"])) {

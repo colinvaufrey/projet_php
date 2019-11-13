@@ -9,6 +9,8 @@
 
     include_once("../model/Users.class.php");
     include_once("../model/UsersDAO.class.php");
+    
+    session_start();
 
     // Creation de l'unique objet DAO
     $dao = new UsersDAO();
@@ -42,8 +44,7 @@
 
     // Charge la vue
     if ($isLogged) {
-        var_dump($_SESSION["user"]);
-        //$view->display("main.view.php");
+        header("Location: ../controler/main.ctrl.php");
     } else {
         $view->display("login.view.php");
     }

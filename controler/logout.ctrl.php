@@ -2,11 +2,11 @@
     // Inclusion du framework
     include_once("../framework/View.class.php");
 
-    //session_start();
+    include_once("../model/Users.class.php");
 
-    //unset($_SESSION["user"]);
+    session_start();
 
-    //session_abort();
+    session_unset();
 
     ////////////////////////////////////////////////////////////////////////////
     // Construction de la vue
