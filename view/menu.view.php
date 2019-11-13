@@ -12,7 +12,6 @@
         <ul>
             <a href="../"><li>Page Principale</li></a>
             <a href="../controler/catalog.ctrl.php"><li>Catalogue</li></a>
-            <a href="../controler/cart.ctrl.php"><li>Mon Panier</li></a>
         </ul>
     </nav>
     <nav>
