@@ -86,7 +86,7 @@
             $CartItem = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // retourne un élément de type CartItem (sous forme d'un tableau)
 
             if (count($CartItem) != 0) {
-                $res = $CartItem;
+                $res = $CartItem[0];
             } else {
                 $res = false;
             }
@@ -130,7 +130,7 @@
             if (!$this->getCartItem($refProduct, $username)) {
                 // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */
-                $sql = 'UPDATE CartItem SET quantity = ? WHERE username= ? AND refProduct = ?'; // requête (double ou simple quotes ?)
+                $sql = 'UPDATE CartItem SET quantity = ? WHERE username = ? AND refProduct = ?'; // requête (double ou simple quotes ?)
                 $sth = $this->db->prepare($sql); // début de la préparation
                 $sth->bindParam(1, $username, PDO::PARAM_INT);
                 $sth->bindParam(2, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
