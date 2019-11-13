@@ -11,33 +11,37 @@
     include_once("../model/Users.class.php");
     include_once("../model/UsersDAO.class.php");
 
+    include_once("../model/CartItem.class.php");
+
     session_start();
 
-    // Creation de l'unique objet DAO
-    $dao = new UsersDAO();
+    $uDao = new UsersDAO();
+    $pDao = new ProductsDAO();
+
+    $products = array();
+    $quantities = array();
+
+    if (isset($_SESSION["user"])) {
+        $user = $_SESSION["user"];
+        $cart = $user->getCart();
+        for ($i = 0; $i < count($cart); $i++) {
+            $products[] = $pDao->get($cart[$i]->refProduct);
+            $quantities[] = $cart[$i]->quantity;
+        }
+    } else {
+        $quantities = false;
+        $products = false;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     // Construction de la vue
     ////////////////////////////////////////////////////////////////////////////
     $view = new View();
 
-    if (isset($_SESSION["user"])) {
-        $user = $_SESSION["user"];
-        $cart = $user->getCart();
-        for($i=0; $i<count($cart); $i++){
-            $items[] = $dao.getCartItem($cart[i]->$refProduct, $cart[i]->$username);
-            $quantitys[] = $cart[i]->$quantity;
-        }
-    } else {
-        $quantitys = false;
-        $items = false;
-    }
-
     // Passe les paramètres à la vue
-    $view->assign('cart', $quantitys);
-    $view->assign('items', $items);
+    $view->assign('quantities', $quantities);
+    $view->assign('products', $products);
 
     // Charge la vue
     $view->display("cart.view.php");
-    var_dump($cart);
 ?>

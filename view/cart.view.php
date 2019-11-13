@@ -8,22 +8,22 @@
     </head>
     <body>
         <?php include("menu.view.php");
-        if($cart == "erreur"){
+        if (!$products){
             echo "<article>Une erreur est survenue, veuillez retourner sur la page principale et réessayer</article>";
         } else {
         ?>
-
         <article class="Panier">
-            <!-- 
+            <!--
             public $username;
             public $reProduct;
-            public $quantity; 
+            public $quantity;
             -->
             <?php
-                for($i=0; $i<count($quantitys); $i++){
-                    $quantity = $quantitys[i];
-                    $p = $items[i];
+                for($i = 0; $i < count($products); $i++) {
+                    $quantity = $quantities[$i];
+                    $p = $products[$i];
             ?>
+
             <section>
                 <!-- Image, Nom, Quantité, Prix -->
                 <img src="<?= $p->img ?>" alt="Image de <?= $p->title ?>">
@@ -31,14 +31,16 @@
                 <p>Quantité choisie : <?= $quantity ?></p>
                 <h3><?= $p->prix ?>€</h3>
             </section>
-            <?php
-                }
-                if (count($quantitys) == 0) {
-                    echo "<article>Votre panier est actuellement vide, si c'est une erreur, veuillez réessayer de le remplir</article>";
-                }
-            ?>
+            <?php } ?>
+
         </article>
-            
+
+        <?php
+            if (count($products) == 0) {
+                echo "<article>Votre panier est actuellement vide, si c'est une erreur, veuillez réessayer de le remplir</article>";
+            }
+        ?>
+
         <?php } include("footer.view.php") ?>
     </body>
 </html>
