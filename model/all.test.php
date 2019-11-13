@@ -3,6 +3,7 @@
     require_once('ProductsDAO.class.php');
     require_once('Users.class.php');
     require_once('UsersDAO.class.php');
+    require_once('CartItem.class.php');
 
     // Creation des instances DAO
     $product = new ProductsDAO();
@@ -23,14 +24,14 @@
     var_dump($p);
     $u = $user->get("user");
     var_dump($u);
-    $u = $user->getCartItem(1, $u->username);
+    $u = $user->getCartItem(1, "user");
     var_dump($u);
-    $u = $user->addCartItem(1, $u->username);
+    $u = $user->addCartItem(1, "user");
     var_dump($u);
-    $u = $user->addCartItem(2, $u->username);
+    $u = $user->addCartItem(2, "user");
     var_dump($u);
-    $u = $user->removeCartItem(3, $u->username);
+    $u = $user->removeCartItem(3, "user");
     var_dump($u);
-    $u = $user->removeCartItem(2, $u->username);
+    $u = $user->removeCartItem(2, "user");
     var_dump($u);
 ?>

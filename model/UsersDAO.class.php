@@ -12,7 +12,8 @@
                 echo "erreur de connexion à la base de données \n";
             }
         }
-        function get(string $username):Users {
+
+        function get(string $username) {
             //prepare (puis execute) au lieu de query
 
             // A TESTER //
@@ -24,23 +25,28 @@
             $Users = $sth->fetchAll(PDO::FETCH_CLASS, "Users"); // fabriquation d'un objet de la classe Users (rendu sous forme de tableau)
             //          //
 
-            $User = $Users[0];
+            if (count($Users) != 0) {
+                $User = $Users[0];
 
-            //récupération panier
-            //prepare (puis execute) au lieu de query
+                //récupération panier
+                //prepare (puis execute) au lieu de query
 
-            // A TESTER //
-            /* Exécute une requête préparée en en liant une variable PHP */
-            $sql = 'SELECT * FROM CartItem WHERE username = ?'; // requête
-            $sth = $this->db->prepare($sql); // début de la préparation
-            $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre attendu (ici une string de 20 caractères)
-            $sth->execute(); // exécution
-            $User->myCart = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // stockage dans User->myCart d'un tableau de CartItem (son panier)
-            //          //
+                // A TESTER //
+                /* Exécute une requête préparée en en liant une variable PHP */
+                $sql = 'SELECT * FROM CartItem WHERE username = ?'; // requête
+                $sth = $this->db->prepare($sql); // début de la préparation
+                $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre attendu (ici une string de 20 caractères)
+                $sth->execute(); // exécution
+                $User->myCart = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // stockage dans User->myCart d'un tableau de CartItem (son panier)
+                //          //
+            } else {
+                $User = false;
+            }
 
             return $User;
         }
-        function getCartItem(int $refProduct, string $username):CartItem {
+
+        function getCartItem(int $refProduct, string $username) {
 
             // A TESTER //
             /* Exécute une requête préparée en en liant des variables PHP */
@@ -52,10 +58,17 @@
             $CartItem = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // retourne un élément de type CartItem (sous forme d'un tableau)
             //          //
 
-            return $CartItem[0];
+            if (count($CartItem) != 0) {
+                $res = $CartItem[0];
+            } else {
+                $res = false;
+            }
+
+            return $res;
         }
+
         function addCartItem(int $refProduct, string $username) {
-            if(get($refProduct, $username) == null) {
+            if(!$this->getCartItem($refProduct, $username)) {
 
                 // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */
@@ -79,8 +92,9 @@
 
             }
         }
+
         function removeCartItem(int $refProduct, string $username) {
-            if(get($refProduct, $username) != null) {
+            if($this->getCartItem($refProduct, $username) != null) {
 
                 // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */

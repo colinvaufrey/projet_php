@@ -75,10 +75,13 @@ article {
     justify-content: center;
 }
 
+.listeArticles>a {
+    margin: 1em;
+}
+
 .listeArticles .produit {
     position: relative;
     background-color: white;
-    margin: 1em;
     padding: 2em;
     border-radius: 20px;
     width: 10em;
@@ -150,6 +153,11 @@ form>.form_item>input[type="text"], form>.form_item>input[type="password"] {
     border: 0.1em solid rgba(93, 49, 0, 0.6);
     padding-left: 0.7em;
     padding-right: 0.7em;
+    outline: none;
+}
+
+form>.form_item>input[type="text"]:focus, form>.form_item>input[type="password"]:focus {
+    border: 0.1em solid rgba(204, 108, 0, 1);
 }
 
 form>.form_item>* {

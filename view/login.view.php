@@ -11,6 +11,7 @@
 
         <form class="login" action="login.ctrl.php" method="post">
             <legend>Se connecter</legend>
+            <span class="error"><?= $error ?></span>
             <div class="form_item">
                 <label for="id">Identifiant</label>
                 <input id="id" type="text" name="id">

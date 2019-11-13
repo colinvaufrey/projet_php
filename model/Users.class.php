@@ -3,9 +3,19 @@
         public $username;
         public $password;
         public $myCart;
-        function __construct($username, $password){
-            $this->username = $username;
-            $this->password = $password;
+        function __construct() {
+        }
+
+        public function getUsername() {
+            return $this->username;
+        }
+
+        public function getPassword() {
+            return $this->password;
+        }
+
+        public function getCart() {
+            return $this->myCart;
         }
     }
 ?>
