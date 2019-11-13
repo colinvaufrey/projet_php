@@ -46,6 +46,29 @@
             return $User;
         }
 
+        function addUser(string $username, string $password){
+            $sql = 'SELECT INTO Users WHERE username = ?';
+            $sth = $this->db->prepare($sql);
+            $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
+            if ($sth->execute() == 0 && !$this->get($username, $password)){
+                $sql = 'INSERT INTO Users (username, password, myCart) VALUES (?, ?, null)';
+                $sth = $this->db->prepare($sql);
+                $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
+                $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
+                $sth->execute();
+            } else {
+                echo"<article>Utilisateur déjà existant, prière de changer le nom d'utilisateur</article>";
+            }
+        }
+
+        function removeUser(string $username, string $password){
+            $sql = 'DELETE FROM Users WHERE username= ? AND password = ?';
+            $sth = $this->db->prepare($sql);
+            $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
+            $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
+            $sth->execute();
+        }
+
         function getCartItem(int $refProduct, string $username) {
 
             // A TESTER //
