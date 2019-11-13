@@ -28,9 +28,7 @@
                 </article>
                 <article class="prixEtBouton">
                     <h3><?= $produit->prix ?>€</h3>
-                    <a href="../controler/cart.ctrl.php">Ajouter au Panier
-                    <?php addCartItem(int $refProduct, string $username)?>
-                    </a>
+                    <a href="../controler/add_to_cart.ctrl.php?ref=<?= $produit->ref ?>&quantity=1">Ajouter au Panier</a>
                 </article>
             </section>
         </article>

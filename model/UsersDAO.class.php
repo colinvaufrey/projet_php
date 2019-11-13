@@ -47,8 +47,6 @@
         }
 
         function getCartItem(int $refProduct, string $username) {
-
-            // A TESTER //
             /* Exécute une requête préparée en en liant des variables PHP */
             $sql = 'SELECT * FROM CartItem WHERE username = ? AND refProduct = ?'; // requête
             $sth = $this->db->prepare($sql); // début de la préparation
@@ -56,10 +54,9 @@
             $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
             $sth->execute(); // exécution
             $CartItem = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // retourne un élément de type CartItem (sous forme d'un tableau)
-            //          //
 
             if (count($CartItem) != 0) {
-                $res = $CartItem[0];
+                $res = $CartItem;
             } else {
                 $res = false;
             }
@@ -67,55 +64,58 @@
             return $res;
         }
 
-        function addCartItem(int $refProduct, string $username) {
-            if(!$this->getCartItem($refProduct, $username)) {
+        function getAllCartItem(string $username) {
 
+            // A TESTER //
+            /* Exécute une requête préparée en en liant des variables PHP */
+            $sql = 'SELECT * FROM CartItem WHERE username = ?'; // requête
+            $sth = $this->db->prepare($sql); // début de la préparation
+            $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
+            $sth->execute(); // exécution
+            $CartItem = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // retourne tous les éléments de type CartItem (sous forme d'un tableau)
+
+            if (count($CartItem) != 0) {
+                $res = $CartItem;
+            } else {
+                $res = false;
+            }
+
+            return $res;
+        }
+
+        function addCartItem(int $refProduct, string $username, int $quantity) {
+            if (!$this->getCartItem($refProduct, $username)) {
                 // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */
-                $sql = 'INSERT INTO CartItem (refProduct, username, quantity) VALUES (?, ?, 1)'; // requête (double ou simple quotes ? quotes autour du 1 ?)
+                $sql = 'INSERT INTO CartItem (refProduct, username, quantity) VALUES (?, ?, ?)'; // requête
                 $sth = $this->db->prepare($sql); // début de la préparation
                 $sth->bindParam(1, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 1 attendu (ici un int)
                 $sth->bindParam(2, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 2 attendu (ici une string de 20 caractères)
-                $sth->execute(); // exécution
-                //          //
+                $sth->bindParam(3, $quantity, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici une string de 20 caractères)
+                $sth->execute();
+            }
+        }
 
-            } else {
-
+        function updateCartItemQuantity(int $refProduct, string $username, int $quantity) {
+            if (!$this->getCartItem($refProduct, $username)) {
                 // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */
-                $sql = 'UPDATE CartItem SET quantity = quantity + 1 WHERE username= ? AND refProduct = ?'; // requête (double ou simple quotes ?)
+                $sql = 'UPDATE CartItem SET quantity = ? WHERE username= ? AND refProduct = ?'; // requête (double ou simple quotes ?)
                 $sth = $this->db->prepare($sql); // début de la préparation
-                $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
-                $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
+                $sth->bindParam(1, $username, PDO::PARAM_INT);
+                $sth->bindParam(2, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
+                $sth->bindParam(3, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
                 $sth->execute(); // exécution
-                //          //
-
             }
         }
 
         function removeCartItem(int $refProduct, string $username) {
-            if($this->getCartItem($refProduct, $username) != null) {
-
-                // A TESTER //
-                /* Exécute une requête préparée en en liant des variables PHP */
-                $sqlTest = 'SELECT quantity FROM CartItem WHERE username = ? AND refProduct = ?';
-                $sth = $this->db->prepare($sqlTest); // début de la préparation
+            if($this->getCartItem($refProduct, $username)) {
+                $sql = 'DELETE FROM CartItem WHERE username= ? AND refProduct = ?'; // requête (double ou simple quotes ?)
+                $sth = $this->db->prepare($sql); // début de la préparation
                 $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
                 $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
-                if ($sth->execute() > 1) {
-                    $sqlTest = 'UPDATE CartItem SET quantity = quantity - 1 WHERE username = ? AND refProduct = ?';
-                    $sth = $this->db->prepare($sqlTest); // début de la préparation
-                    $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
-                    $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
-                } else {
-                    $sql = 'DELETE FROM CartItem WHERE username= ? AND refProduct = ?'; // requête (double ou simple quotes ?)
-                    $sth = $this->db->prepare($sql); // début de la préparation
-                    $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
-                    $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
-                    $sth->execute(); // exécution
-                }
-                //          //
-
+                $sth->execute(); // exécution
             }
         }
     }

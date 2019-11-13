@@ -39,4 +39,5 @@
 
     // Charge la vue
     $view->display("cart.view.php");
+    var_dump($cart);
 ?>
