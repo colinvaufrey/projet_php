@@ -12,7 +12,7 @@
 
     // Creation de l'unique objet DAO
     $dao = new UsersDAO();
-
+    $isLogged = false;
     $error = "";
 
     if (isset($_POST['id']) && isset($_POST['pw'])) {
@@ -22,8 +22,8 @@
         $account = $dao->get($name);
         if ($account) {
             if (password_verify($pass, $account->getPassword())) {
-                session_start();
-                $error = "Connexion réussie";
+                $_SESSION["user"] = $account;
+                $isLogged = true;
             } else {
                 $error = "Le mot de passe ne correspond pas à l'identifiant";
             }
@@ -41,5 +41,10 @@
     $view->assign("error", $error);
 
     // Charge la vue
-    $view->display("login.view.php");
+    if ($isLogged) {
+        var_dump($_SESSION["user"]);
+        //$view->display("main.view.php");
+    } else {
+        $view->display("login.view.php");
+    }
 ?>

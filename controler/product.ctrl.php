@@ -15,14 +15,14 @@
     // Construction de la vue
     ////////////////////////////////////////////////////////////////////////////
     $view = new View();
-    
+
     // récupérer $ref
     $ref = $_GET["ref"];
-    $produit = $dao->getProduct($ref);
+    $produit = $dao->get($ref);
 
     // Passe les paramètres à la vue
     $view->assign('produit', $produit);
 
     // Charge la vue
-    $view->display("product.view.php");
+    $view->display("../view/product.view.php");
 ?>
