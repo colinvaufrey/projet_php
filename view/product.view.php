@@ -9,15 +9,15 @@
     <body>
         <?php include("menu.view.php"); 
         if($produit == "erreur"){
-            echo "<p>Une erreur est survenue, veuillez retourner sur la page principale et réessayer</p>";
+            echo "<article>Une erreur est survenue, veuillez retourner sur la page principale et réessayer</article>";
         } else {
         ?>
-        <article class="main">
+        <article class="produitArticle">
             <section>
                 <article class="image">
                     <img src="<?= $produit->img ?>" alt="Image de <?= $produit->title ?>">
                 </article>
-                <article class="titre, description, caractéristiques">
+                <article class="titreDescriptionCaractéristiques">
                     <h2><?= $produit->title ?></h2>
                     <p><?= $produit->decription ?></p>
                     <p>
@@ -26,7 +26,7 @@
                     Stock : <?= $produit->stock ?><br>
                     </p>
                 </article>
-                <article class="prix et bouton"><h3>
+                <article class="prixEtBouton"><h3>
                     <?= $produit->prix ?>€</h3>
                     <a href="">Ajouter au Panier</a>
                 </article>
