@@ -28,11 +28,22 @@
                 </article>
                 <article class="prixEtBouton">
                     <h3><?= $produit->prix ?>€</h3>
-                    <a href="../controler/add_to_cart.ctrl.php?ref=<?= $produit->ref ?>&quantity=1">Ajouter au Panier</a>
+                    <input type="number" min="1" max="<?= $produit->stock ?>" name="quanity" value="1" onchange="updateLink(this.value)">
+                    <a id="addCartLink" href="../controler/add_to_cart.ctrl.php?ref=<?= $produit->ref ?>&quantity=1">Ajouter au Panier</a>
                 </article>
             </section>
         </article>
 
         <?php } include("footer.view.php") ?>
+
+        <script type="text/javascript">
+            var ref = <?= $produit->ref ?>
+
+            function updateLink(quantity) {
+                let linkToEdit = document.getElementById("addCartLink");
+                let newURL = "../controler/add_to_cart.ctrl.php?ref=" + ref + "&quantity=" + quantity;
+                linkToEdit.href = newURL;
+            }
+        </script>
     </body>
 </html>
