@@ -29,6 +29,8 @@
                 <img src="<?= $p->img ?>" alt="Image de <?= $p->title ?>">
                 <h2><?= $p->title ?></h2>
                 <p>Quantité choisie : <?= $quantity ?></p>
+                <input id="<?= $p->ref ?>_quant" type="number" min="1" max="<?= $p->stock ?>" value="<?= $quantity ?>" onchange="updateLink(<?= $p->ref ?>, this.value)">
+                <a id="<?= $p->ref ?>_updateCartLink">Modifier la quantité</a>
                 <h3><?= $p->prix ?>€</h3>
             </section>
             <?php } ?>
@@ -42,5 +44,14 @@
         ?>
 
         <?php } include("footer.view.php") ?>
+
+        <script type="text/javascript">
+
+            function updateLink(ref, quantity) {
+                let linkToEdit = document.getElementById(ref + "_addCartLink");
+                let newURL = "../controler/add_to_cart.ctrl.php?ref=" + ref + "&quantity=" + quantity;
+                linkToEdit.href = newURL;
+            }
+        </script>
     </body>
 </html>
