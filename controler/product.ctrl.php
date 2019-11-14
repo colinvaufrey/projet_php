@@ -33,13 +33,16 @@
 
     if (isset($_SESSION["user"])) {
         $itemInCart = $uDao->getCartItem($ref, $_SESSION["user"]->getUsername());
+        $isLogged = true;
     } else {
         $itemInCart = false;
+        $isLogged = false;
     }
 
     // Passe les paramètres à la vue
     $view->assign('produit', $produit);
     $view->assign('itemInCart', $itemInCart);
+    $view->assign('isLogged', $isLogged);
 
     // Charge la vue
     $view->display("../view/product.view.php");

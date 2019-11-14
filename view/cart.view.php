@@ -29,7 +29,7 @@
                     <p>Quantité choisie : <?= $quantity ?></p>
                     <h3><?= number_format($p->prix * $quantity, 2) ?>€</h3>
                 </div>
-                <form class="updateForm" action="../controler/add_to_cart.ctrl.php" method="get">
+                <form class="updateForm" action="../controler/add_to_cart.ctrl.php" method="post">
                     <input type="hidden" name="ref" value="<?= $p->ref ?>">
                     <input type="hidden" name="force_update" value="true">
                     <input type="number" name="quantity" min="0" max="<?= $p->stock ?>" value="<?= $quantity ?>">
@@ -39,7 +39,7 @@
             <?php } ?>
 
             <section>
-                <p>Total des prix : <?= number_format($total, 2)?> €</p>
+                <p class="prixTotal">Total des prix : <?= number_format($total, 2)?> €</p>
                 <form class="" action="index.html" method="post">
                     <input type="submit" name="submit" value="Valider et passer au paiement">
                 </form>

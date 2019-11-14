@@ -11,10 +11,24 @@
 
         <article class="main">
             <section>
-                <h2>Etre Fruits, ça donne la pêche !</h2>
+                <h2>Être Fruits, ça donne la pêche !</h2>
                 <h3>Vous aussi, ayez la banane !</h3>
                 <h4>Venez vous fendre la poire !</h4>
                 <h5>Ici, personne ne vous casse les noisettes !</h5>
+
+                <h2>Voici quelques-uns de nos produits phares :</h2>
+            </section>
+            <section class="listeArticles">
+                <?php foreach ($produits as $prod): ?>
+                    <a href="../controler/product.ctrl.php?ref=<?= $prod->ref ?>">
+                        <div class="produit">
+                            <p> <?= $prod->title ?> </p>
+                            <div class="imgcontainer">
+                                <img src="<?= $prod->img ?>" alt="Image de <?= $prod->title ?>">
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
             </section>
         </article>
 

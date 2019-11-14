@@ -249,6 +249,11 @@ form>input[type="submit"]:hover {
     text-align: center;
 }
 
+.panier .prixTotal {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 footer {
     color: #5D5500;
     font-weight: bold;

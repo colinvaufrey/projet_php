@@ -36,13 +36,15 @@
                 ?>
                 <h3><?= number_format($produit->prix, 2) ?>€</h3>
                 <?php
-                    if ($produit->stock == 0) {
-                        echo "Impossible d'ajouter ce produit au panier, à court de stock";
+                    if (!$isLogged) {
+                        echo "Vous devez être connecté pour ajouter des produits à votre panier.";
+                    } elseif ($produit->stock == 0) {
+                        echo "Impossible d'ajouter ce produit au panier, à court de stock.";
                     } elseif ($itemInCart && ($itemInCart->quantity == $produit->stock)) {
-                        echo "Impossible d'ajouter ce produit au panier, tout le stock restant est dans votre panier";
+                        echo "Impossible d'ajouter ce produit au panier, tout le stock restant est déjà dans votre panier.";
                     } else {
                 ?>
-                <form class="addCart" action="../controler/add_to_cart.ctrl.php" method="get">
+                <form class="addCart" action="../controler/add_to_cart.ctrl.php" method="post">
                     <input type="hidden" name="ref" value="<?= $produit->ref ?>">
                     <input type="number" min="1" max="<?= $itemInCart ? $produit->stock - $itemInCart->quantity : $produit->stock ?>" name="quantity" value="<?= ($produit->stock == 0) ? 0 : 1 ?>">
                     <input type="submit" name="submit" value="Ajouter au panier">
