@@ -3,13 +3,13 @@ CREATE TABLE Products(
     title STRING,
     img TEXT,
     description TEXT,
-    prix REAL,
+    price REAL,
     color STRING,
     origin STRING,
     stock INTEGER
 );
 CREATE TABLE Users(
-    username STRING,
+    username STRING PRIMARY KEY,
     password BINARY[60]
 );
 CREATE TABLE CartItem(
