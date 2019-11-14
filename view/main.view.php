@@ -9,6 +9,16 @@
     <body>
         <?php include("menu.view.php");?>
 
+        <?php
+        if ($paid) {
+        ?>
+        <article class="paid">
+            <p>Merci de votre achat, au plaisir de vous revoir !</p>
+        </article>
+        <?php
+        }
+        ?>
+
         <article class="main">
             <section>
                 <h2>Être Fruits, ça donne la pêche !</h2>
