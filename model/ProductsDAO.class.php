@@ -32,7 +32,7 @@ class ProductsDAO {
         return $Products[0];
     }
 
-    function getAll() : array {
+    function getAll() {
 
         // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
@@ -44,13 +44,18 @@ class ProductsDAO {
         return $Products;
     }
 
-    function getProductsInStock() : array {
+    function getProductsInStock() {
         $res = $this->db->query("SELECT * FROM Products WHERE stock > 0");
         $ProductsInStock = $res->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
+
+        if (count($ProductsInStock) == 0) {
+            $ProductsInStock = false;
+        }
+
         return $ProductsInStock;
     }
 
-    function getProductsByOrigin(string $origin) : array {
+    function getProductsByOrigin(string $origin) {
 
         // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
@@ -60,10 +65,14 @@ class ProductsDAO {
         $sth->execute(); // exécution
         $ProductsFromOrigin = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
 
+        if (count($ProductsFromOrigin) == 0) {
+            $ProductsFromOrigin = false;
+        }
+
         return $ProductsFromOrigin;
     }
 
-    function getProductsByColor(string $color) : array {
+    function getProductsByColor(string $color) {
 
         // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
@@ -73,10 +82,14 @@ class ProductsDAO {
         $sth->execute(); // exécution
         $ProductsByColor = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
 
+        if (count($ProductsByColor) == 0) {
+            $ProductsByColor = false;
+        }
+
         return $ProductsByColor;
     }
 
-    function getProductsByPrice(float $min, float $max) : array {
+    function getProductsByPrice(float $min, float $max) {
 
         // A TESTER //
         /* Exécute une requête préparée en en liant des variables PHP */
@@ -89,10 +102,14 @@ class ProductsDAO {
         $sth->execute(); // exécution
         $ProductsByTheirPrices = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
 
+        if (count($ProductsByTheirPrices) == 0) {
+            $ProductsByTheirPrices = false;
+        }
+
         return $ProductsByTheirPrices;
     }
 
-    function getProductsByTitle(string $title) : array {
+    function getProductsByTitle(string $title) {
 
         // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
@@ -101,6 +118,10 @@ class ProductsDAO {
         $sth->bindParam(1, $title, PDO::PARAM_STR, 30); // sécurisation du paramètre attendu (ici une string de 30 caractères)
         $sth->execute(); // exécution
         $ProductsByTheirTitle = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
+
+        if (count($ProductsByTheirTitle) == 0) {
+            $ProductsByTheirTitle = false;
+        }
 
         return $ProductsByTheirTitle;
     }
