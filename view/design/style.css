@@ -180,6 +180,75 @@ form>input[type="submit"]:hover {
     border: 0.2em solid rgba(204, 108, 0, 0.5);
 }
 
+.sorterContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0em 3em;
+}
+
+.sorterContainer form>select {
+    padding: 0.5em;
+    margin: 1em;
+}
+
+.produitArticle {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.produitArticle section {
+    height: min-content;
+}
+
+.produitArticle h2, .produitArticle h3 {
+    font-size: 2.5em;
+}
+
+.produitArticle img {
+    border-radius: 20px;
+    width: 30em;
+    height: auto;
+}
+
+.produitArticle .prixEtBouton input {
+    margin: 1em;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.panier {
+    display: flex;
+    flex-direction: column;
+}
+
+.panier section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3em 10em;
+}
+
+.panier section>* {
+    height: min-content;
+}
+
+.panier section img {
+    width: 20em;
+    border-radius: 20px;
+    height: auto;
+}
+
+.panier section input {
+    padding: 0.5em;
+    margin: 1em;
+    text-align: center;
+}
+
 footer {
     color: #5D5500;
     font-weight: bold;
