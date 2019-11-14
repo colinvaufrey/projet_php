@@ -24,9 +24,14 @@
     if (isset($_SESSION["user"])) {
         $user = $_SESSION["user"];
         $cart = $user->getCart();
-        for ($i = 0; $i < count($cart); $i++) {
-            $products[] = $pDao->get($cart[$i]->refProduct);
-            $quantities[] = $cart[$i]->quantity;
+        if ($cart) {
+            for ($i = 0; $i < count($cart); $i++) {
+                $products[] = $pDao->get($cart[$i]->refProduct);
+                $quantities[] = $cart[$i]->quantity;
+            }
+        } else {
+            $quantities = false;
+            $products = false;
         }
     } else {
         $quantities = false;

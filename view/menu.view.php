@@ -12,13 +12,14 @@
         <ul>
             <a href="../"><li>Page Principale</li></a>
             <a href="../controler/catalog.ctrl.php"><li>Catalogue</li></a>
+            <a href="../controler/sort.ctrl.php"><li>Par catégories</li></a>
         </ul>
     </nav>
     <nav>
         <ul>
             <?php
                 if ($isLogged) {
-                    echo '<a href="../controler/cart.ctrl.php" class="login"><li>'.$username.'<span> Mon panier</span></li></a>';
+                    echo '<a href="../controler/cart.ctrl.php" class="login"><li>Panier de '.$username.'</li></a>';
                     echo '<a href="../controler/logout.ctrl.php"><li>Se déconnecter</li></a>';
                 } else {
                     echo '<a href="../controler/login.ctrl.php"><li>Se connecter</li></a>';

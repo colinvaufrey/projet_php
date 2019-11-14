@@ -38,42 +38,28 @@
                 $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre attendu (ici une string de 20 caractères)
                 $sth->execute(); // exécution
                 $User->myCart = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // stockage dans User->myCart d'un tableau de CartItem (son panier)
-                //          //
+                if (!$User->myCart) {
+                    $User->myCart = array();
+                }
             } else {
                 $User = false;
             }
-
             return $User;
         }
 
-        function addUser(string $username, string $password){
-            $sql = 'SELECT INTO Users WHERE username = ?';
+        function addUser(string $username, string $password) {
+            $sql = 'INSERT INTO Users(username, password) VALUES (?, ?)';
             $sth = $this->db->prepare($sql);
             $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
-            if ($sth->execute() == 0 && !$this->get($username, $password)){
-                $sql = 'INSERT INTO Users (username, password, myCart) VALUES (?, ?, null)';
-                $sth = $this->db->prepare($sql);
-                $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
-                $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
-                $sth->execute();
-            } else {
-                echo"<article>Utilisateur déjà existant, prière de changer le nom d'utilisateur</article>";
-            }
+            $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
+            $sth->execute();
         }
 
-        function removeUser(string $username, string $password){
-            $sql = 'SELECT INTO Users WHERE username = ?';
+        function removeUser(string $username) {
+            $sql = 'DELETE FROM Users WHERE username= ?';
             $sth = $this->db->prepare($sql);
             $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
-            if ($sth->execute() == 1){
-                $sql = 'DELETE FROM Users WHERE username= ? AND password = ?';
-                $sth = $this->db->prepare($sql);
-                $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
-                $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
-                $sth->execute();
-            } else {
-                echo"<article>Utilisateur non existant</article>";
-            }
+            $sth->execute();
         }
 
         function getCartItem(int $refProduct, string $username) {

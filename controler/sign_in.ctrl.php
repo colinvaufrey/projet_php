@@ -27,8 +27,8 @@
             if ($pass == $passConf) {
                 $user = new Users;
                 $user->username = $name;
-                $user->password = $pass;
-                //$dao->addAccount($user);
+                $user->password = password_hash($pass, PASSWORD_BCRYPT);
+                $dao->addUser($user->getUsername(), $user->getPassword());
                 $_SESSION["user"] = $user;
                 $isLogged = true;
             } else {

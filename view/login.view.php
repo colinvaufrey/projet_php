@@ -21,6 +21,8 @@
                 <input id="pw" type="password" name="pw">
             </div>
             <input type="submit" name="submit" value="Valider">
+
+            <p>Vous n'avez pas encore de compte ? <a href="../controler/sign_in.ctrl.php">En créer un</a></p>
         </form>
 
         <?php include("footer.view.php") ?>

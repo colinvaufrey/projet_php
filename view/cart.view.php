@@ -48,6 +48,13 @@
                 </form>
             </section>
 
+            <!-- <section>
+                <h3>Paramètres du compte</h3>
+                <form class="" action="index.html" method="post">
+                    <input type="submit" name="submit" value="Cliquez ici pour supprimer votre compte">
+                </form>
+            </section> -->
+
         </article>
 
         <?php } include("footer.view.php") ?>
