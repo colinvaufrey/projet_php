@@ -11,6 +11,10 @@
 
         <article class="main">
             <section>
+                <h2>Etre Fruits, ça donne la pêche !</h2>
+                <h3>Vous aussi, ayez la banane !</h3>
+                <h4>Venez vous fendre la poire !</h4>
+                <h5>Ici, personne ne vous casse les noisettes !</h5>
             </section>
         </article>
 
