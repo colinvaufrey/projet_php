@@ -29,9 +29,13 @@
                 <img src="<?= $p->img ?>" alt="Image de <?= $p->title ?>">
                 <h2><?= $p->title ?></h2>
                 <p>Quantité choisie : <?= $quantity ?></p>
-                <input id="<?= $p->ref ?>_quant" type="number" min="1" max="<?= $p->stock ?>" value="<?= $quantity ?>" onchange="updateLink(<?= $p->ref ?>, this.value)">
-                <a id="<?= $p->ref ?>_updateCartLink">Modifier la quantité</a>
-                <h3><?= $p->prix ?>€</h3>
+                <h3><?= number_format($p->prix * $quantity, 2) ?>€</h3>
+                <form class="updateForm" action="../controler/add_to_cart.ctrl.php" method="get">
+                    <input type="hidden" name="ref" value="<?= $p->ref ?>">
+                    <input type="hidden" name="force_update" value="true">
+                    <input type="number" name="quantity" min="0" max="<?= $p->stock ?>" value="<?= $quantity ?>">
+                    <input type="submit" name="submit" value="Modifier la quantité">
+                </form>
             </section>
             <?php } ?>
 
@@ -48,8 +52,8 @@
         <script type="text/javascript">
 
             function updateLink(ref, quantity) {
-                let linkToEdit = document.getElementById(ref + "_addCartLink");
-                let newURL = "../controler/add_to_cart.ctrl.php?ref=" + ref + "&quantity=" + quantity;
+                let linkToEdit = document.getElementById(ref + "_updateCartLink");
+                let newURL = "../controler/add_to_cart.ctrl.php?force_update=true&ref=" + ref + "&quantity=" + quantity;
                 linkToEdit.href = newURL;
             }
         </script>

@@ -45,11 +45,11 @@ h1 {
 }
 
 .navbars>nav>ul>a:first-child {
-    border-radius: 0px 0px 0px 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .navbars>nav>ul>a:last-child {
-    border-radius: 0px 0px 20px 0px
+    border-bottom-right-radius: 20px;
 }
 
 .navbars>nav>ul>a:hover {
