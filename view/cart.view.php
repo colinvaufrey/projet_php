@@ -12,12 +12,7 @@
             echo "<article>Votre panier est vide, revenez quand vous aurez choisi vos délicieux mets !</article>";
         } else {
         ?>
-        <article class="Panier">
-            <!--
-            public $username;
-            public $reProduct;
-            public $quantity;
-            -->
+        <article class="panier">
             <?php
             $total = 0;
                 for($i = 0; $i < count($products); $i++) {
@@ -29,9 +24,11 @@
             <section>
                 <!-- Image, Nom, Quantité, Prix -->
                 <img src="<?= $p->img ?>" alt="Image de <?= $p->title ?>">
-                <h2><?= $p->title ?></h2>
-                <p>Quantité choisie : <?= $quantity ?></p>
-                <h3><?= number_format($p->prix * $quantity, 2) ?>€</h3>
+                <div class="infosProd">
+                    <h2><?= $p->title ?></h2>
+                    <p>Quantité choisie : <?= $quantity ?></p>
+                    <h3><?= number_format($p->prix * $quantity, 2) ?>€</h3>
+                </div>
                 <form class="updateForm" action="../controler/add_to_cart.ctrl.php" method="get">
                     <input type="hidden" name="ref" value="<?= $p->ref ?>">
                     <input type="hidden" name="force_update" value="true">

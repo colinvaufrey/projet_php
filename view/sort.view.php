@@ -10,22 +10,24 @@
         <?php include("menu.view.php") ?>
 
         <article class="main">
-            <form class="origin" action="../controler/sort.ctrl.php" method="get">
-                <select class="listeDer" name="origin">
-                    <option value="france">France</option>
-                    <option value="espagne">Espagne</option>
-                    <option value="tchernobyl">Tchernobyl</option>
-                </select>
-                <input type="submit" name="submit" value="Trier par origine">
-            </form>
-            <form class="color" action="../controler/sort.ctrl.php" method="get">
-                <select class="listeDer" name="color">
-                    <option value="rouge">Rouge</option>
-                    <option value="orange">Orange</option>
-                    <option value="jaune">Jaune</option>
-                </select>
-                <input type="submit" name="submit" value="Trier par origine">
-            </form>
+            <div class="sorterContainer">
+                <form class="origin" action="../controler/sort.ctrl.php" method="get">
+                    <select class="listeDer" name="origin">
+                        <option value="france">France</option>
+                        <option value="espagne">Espagne</option>
+                        <option value="tchernobyl">Tchernobyl</option>
+                    </select>
+                    <input type="submit" name="submit" value="Trier par origine">
+                </form>
+                <form class="color" action="../controler/sort.ctrl.php" method="get">
+                    <select class="listeDer" name="color">
+                        <option value="rouge">Rouge</option>
+                        <option value="orange">Orange</option>
+                        <option value="jaune">Jaune</option>
+                    </select>
+                    <input type="submit" name="submit" value="Trier par couleur">
+                </form>
+            </div>
             <section class="listeArticles">
                 <?php foreach ($produits as $prod): ?>
                     <a href="../controler/product.ctrl.php?ref=<?= $prod->ref ?>">
