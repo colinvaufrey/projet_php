@@ -7,10 +7,7 @@
         <title>ÊtreFruits</title>
     </head>
     <body>
-        <?php include("menu.view.php");
-        if(isset($_GET[paiement])){
-            echo "<article>Merci de votre achat ! Au plaisir de vous revoir bientôt au pays des fruits !</article>";
-        } ?>
+        <?php include("menu.view.php");?>
 
         <article class="main">
             <section>

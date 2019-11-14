@@ -126,13 +126,20 @@
         }
 
         function removeCartItem(int $refProduct, string $username) {
-            if($this->getCartItem($refProduct, $username)) {
+            if ($this->getCartItem($refProduct, $username)) {
                 $sql = 'DELETE FROM CartItem WHERE username= ? AND refProduct = ?'; // requête (double ou simple quotes ?)
                 $sth = $this->db->prepare($sql); // début de la préparation
                 $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
                 $sth->bindParam(2, $refProduct, PDO::PARAM_INT); // sécurisation du paramètre 2 attendu (ici un int)
                 $sth->execute(); // exécution
             }
+        }
+
+        function removeAllUserCartItem(string $username) {
+            $sql = 'DELETE FROM CartItem WHERE username= ?'; // requête (double ou simple quotes ?)
+            $sth = $this->db->prepare($sql); // début de la préparation
+            $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
+            $sth->execute(); // exécution
         }
     }
 ?>
