@@ -3,6 +3,7 @@
         public $username;
         public $password;
         public $myCart;
+        
         function __construct() {
         }
 

@@ -3,11 +3,13 @@
     <?php
         $isLogged = false;
 
+        // Si l'utilisateur est connecté
         if (isset($_SESSION["user"])) {
             $username = $_SESSION["user"]->getUsername();
             $isLogged = true;
         }
     ?>
+
     <nav>
         <ul>
             <a href="../"><li>Page Principale</li></a>
@@ -18,6 +20,7 @@
     <nav>
         <ul>
             <?php
+                // La barre de navigation varie en fonction de si l'on est connecté ou non
                 if ($isLogged) {
                     echo '<a href="../controler/cart.ctrl.php" class="login"><li>Panier de '.$username.'</li></a>';
                     echo '<a href="../controler/logout.ctrl.php"><li>Se déconnecter</li></a>';

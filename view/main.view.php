@@ -10,6 +10,7 @@
         <?php include("menu.view.php");?>
 
         <?php
+        // Ne s'affiche que si l'utilisateur vient de cliquer sur Vaider et Payer dans le panier (ou s'il s'amuse avec les URL !)
         if ($paid) {
         ?>
         <article class="paid">

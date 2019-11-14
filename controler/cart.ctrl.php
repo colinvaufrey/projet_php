@@ -1,16 +1,9 @@
 <?php
-    // Partie principale
-
-    // Inclusion du framework
     include_once("../framework/View.class.php");
-
-    // Inclusion du modèle
     include_once("../model/Products.class.php");
     include_once("../model/ProductsDAO.class.php");
-
     include_once("../model/Users.class.php");
     include_once("../model/UsersDAO.class.php");
-
     include_once("../model/CartItem.class.php");
 
     session_start();
@@ -21,10 +14,13 @@
     $products = array();
     $quantities = array();
 
+    // On vérifie que l'utilisateur est connecté
     if (isset($_SESSION["user"])) {
         $user = $_SESSION["user"];
         $cart = $user->getCart();
         if ($cart) {
+            // On crée deux tableaux à passer en paramètres à la vue contenant
+            // chaque objet et sa quantité (associés par leur indice dans le tableau)
             for ($i = 0; $i < count($cart); $i++) {
                 $products[] = $pDao->get($cart[$i]->refProduct);
                 $quantities[] = $cart[$i]->quantity;

@@ -14,36 +14,32 @@
         }
 
         function get(string $username) {
-            //prepare (puis execute) au lieu de query
-
-            // A TESTER //
             /* Exécute une requête préparée en en liant une variable PHP */
             $sql = 'SELECT * FROM Users WHERE username = ?'; // requête
             $sth = $this->db->prepare($sql); // début de la préparation
             $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre attendu (ici une string de 20 caractères)
             $sth->execute(); // exécution
             $Users = $sth->fetchAll(PDO::FETCH_CLASS, "Users"); // fabriquation d'un objet de la classe Users (rendu sous forme de tableau)
-            //          //
 
             if (count($Users) != 0) {
                 $User = $Users[0];
 
-                //récupération panier
-                //prepare (puis execute) au lieu de query
+                //Récupération panier
 
-                // A TESTER //
                 /* Exécute une requête préparée en en liant une variable PHP */
                 $sql = 'SELECT * FROM CartItem WHERE username = ?'; // requête
                 $sth = $this->db->prepare($sql); // début de la préparation
                 $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre attendu (ici une string de 20 caractères)
                 $sth->execute(); // exécution
                 $User->myCart = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // stockage dans User->myCart d'un tableau de CartItem (son panier)
+
                 if (!$User->myCart) {
                     $User->myCart = array();
                 }
             } else {
                 $User = false;
             }
+
             return $User;
         }
 
@@ -52,13 +48,6 @@
             $sth = $this->db->prepare($sql);
             $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
             $sth->bindParam(2, $password, PDO::PARAM_STR, 20);
-            $sth->execute();
-        }
-
-        function removeUser(string $username) {
-            $sql = 'DELETE FROM Users WHERE username= ?';
-            $sth = $this->db->prepare($sql);
-            $sth->bindParam(1, $username, PDO::PARAM_STR, 20);
             $sth->execute();
         }
 
@@ -80,28 +69,8 @@
             return $res;
         }
 
-        function getAllCartItem(string $username) {
-
-            // A TESTER //
-            /* Exécute une requête préparée en en liant des variables PHP */
-            $sql = 'SELECT * FROM CartItem WHERE username = ?'; // requête
-            $sth = $this->db->prepare($sql); // début de la préparation
-            $sth->bindParam(1, $username, PDO::PARAM_STR, 20); // sécurisation du paramètre 1 attendu (ici une string de 20 caractères)
-            $sth->execute(); // exécution
-            $CartItem = $sth->fetchAll(PDO::FETCH_CLASS, "CartItem"); // retourne tous les éléments de type CartItem (sous forme d'un tableau)
-
-            if (count($CartItem) != 0) {
-                $res = $CartItem;
-            } else {
-                $res = false;
-            }
-
-            return $res;
-        }
-
         function addCartItem(int $refProduct, string $username, int $quantity) {
             if (!$this->getCartItem($refProduct, $username)) {
-                // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */
                 $sql = 'INSERT INTO CartItem (refProduct, username, quantity) VALUES (?, ?, ?)'; // requête
                 $sth = $this->db->prepare($sql); // début de la préparation
@@ -114,7 +83,6 @@
 
         function updateCartItemQuantity(int $refProduct, string $username, int $quantity) {
             if ($this->getCartItem($refProduct, $username)) {
-                // A TESTER //
                 /* Exécute une requête préparée en en liant des variables PHP */
                 $sql = 'UPDATE CartItem SET quantity = ? WHERE username = ? AND refProduct = ?'; // requête (double ou simple quotes ?)
                 $sth = $this->db->prepare($sql); // début de la préparation

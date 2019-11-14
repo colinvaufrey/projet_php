@@ -16,8 +16,6 @@ class ProductsDAO {
     }
 
     function get(int $ref) {
-
-        // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
         $sql = 'SELECT * FROM Products WHERE ref = ?'; // requête (double ou simple quotes ?)
         $sth = $this->db->prepare($sql); // début de la préparation
@@ -26,20 +24,24 @@ class ProductsDAO {
         $Products = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un élément de type Product (sous forme d'un tableau)
 
         if (count($Products) == 0) {
-            $Product = false;
+            $Products = false;
+        } else {
+            $Products = $Products[0];
         }
 
-        return $Products[0];
+        return $Products;
     }
 
     function getAll() {
-
-        // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
         $sql = 'SELECT * FROM Products'; // requête
         $sth = $this->db->prepare($sql); // début de la préparation
         $sth->execute(); // exécution
         $Products = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne tous les éléments de type Product (sous forme d'un tableau)
+
+        if (count($Products) == 0) {
+            $Product = false;
+        }
 
         return $Products;
     }
@@ -56,8 +58,6 @@ class ProductsDAO {
     }
 
     function getProductsByOrigin(string $origin) {
-
-        // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
         $sql = 'SELECT * FROM Products WHERE origin = ?'; // requête (double ou simple quotes ?)
         $sth = $this->db->prepare($sql); // début de la préparation
@@ -73,8 +73,6 @@ class ProductsDAO {
     }
 
     function getProductsByColor(string $color) {
-
-        // A TESTER //
         /* Exécute une requête préparée en en liant une variable PHP */
         $sql = 'SELECT * FROM Products WHERE 0 < (SELECT INSTR(UPPER(color), UPPER(?)))'; // requête (double ou simple quotes ?) INSTR renvoie la position de la chaine cherchée et 0 s'il ne la trouve pas (casse ignorée grâce à UPPER)
         $sth = $this->db->prepare($sql); // début de la préparation
@@ -87,43 +85,6 @@ class ProductsDAO {
         }
 
         return $ProductsByColor;
-    }
-
-    function getProductsByPrice(float $min, float $max) {
-
-        // A TESTER //
-        /* Exécute une requête préparée en en liant des variables PHP */
-        (string)$min;   // PDO::PARAM_FLOAT n'existant pas
-        (string)$max;   // on utilisera PDO::PARAM_STR (dixit les forums faut faire comme ça)
-        $sql = 'SELECT * FROM Products WHERE prix >= ? AND ref IN (SELECT ref FROM Products WHERE prix <= ?)'; // requête (double ou simple quotes ?)
-        $sth = $this->db->prepare($sql); // début de la préparation
-        $sth->bindParam(1, $min, PDO::PARAM_STR, 5); // sécurisation du paramètre attendu (ici une string représentant un float de 5 chiffres max)
-        $sth->bindParam(2, $max, PDO::PARAM_STR, 5); // sécurisation du paramètre attendu (ici une string représentant un float de 5 chiffres max)
-        $sth->execute(); // exécution
-        $ProductsByTheirPrices = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
-
-        if (count($ProductsByTheirPrices) == 0) {
-            $ProductsByTheirPrices = false;
-        }
-
-        return $ProductsByTheirPrices;
-    }
-
-    function getProductsByTitle(string $title) {
-
-        // A TESTER //
-        /* Exécute une requête préparée en en liant une variable PHP */
-        $sql = 'SELECT * FROM Products WHERE 0 < (SELECT INSTR(UPPER(title), UPPER(?)))'; // requête (double ou simple quotes ?) INSTR renvoie la position de la chaine cherchée et 0 s'il ne la trouve pas (casse ignorée grâce à UPPER)
-        $sth = $this->db->prepare($sql); // début de la préparation
-        $sth->bindParam(1, $title, PDO::PARAM_STR, 30); // sécurisation du paramètre attendu (ici une string de 30 caractères)
-        $sth->execute(); // exécution
-        $ProductsByTheirTitle = $sth->fetchAll(PDO::FETCH_CLASS, "Products"); // retourne un tableau de Product
-
-        if (count($ProductsByTheirTitle) == 0) {
-            $ProductsByTheirTitle = false;
-        }
-
-        return $ProductsByTheirTitle;
     }
 }
 ?>

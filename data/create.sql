@@ -8,10 +8,12 @@ CREATE TABLE Products(
     origin STRING,
     stock INTEGER
 );
+
 CREATE TABLE Users(
     username STRING,
     password BINARY[60]
 );
+
 CREATE TABLE CartItem(
     username STRING,
     refProduct INTEGER,

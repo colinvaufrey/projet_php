@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="../view/design/style.css">
         <link rel="icon" href="../view/design/images/favicon.png">
-        <title>ÊtreFruits</title>
+        <title>EF - Trier les produits</title>
     </head>
     <body>
         <?php include("menu.view.php") ?>
@@ -28,6 +28,7 @@
                     <input type="submit" name="submit" value="Trier par couleur">
                 </form>
             </div>
+            <!-- On affiche tous les articles correspondant à la requête (tous ceux en stock si non spécifié) -->
             <section class="listeArticles">
                 <?php foreach ($produits as $prod): ?>
                     <a href="../controler/product.ctrl.php?ref=<?= $prod->ref ?>">

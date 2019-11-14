@@ -1,22 +1,14 @@
 <?php
-    // Partie principale
-
-    // Inclusion du framework
     include_once("../framework/View.class.php");
-
-    // Inclusion du modèle
     include_once("../model/Products.class.php");
     include_once("../model/ProductsDAO.class.php");
-
     include_once("../model/Users.class.php");
     include_once("../model/UsersDAO.class.php");
-
     include_once("../model/CartItem.class.php");
 
     session_start();
 
-    // Creation de l'unique objet DAO
-    $dao = new ProductsDAO();
+    $pDao = new ProductsDAO();
     $uDao = new UsersDAO();
 
     ////////////////////////////////////////////////////////////////////////////
@@ -24,15 +16,17 @@
     ////////////////////////////////////////////////////////////////////////////
     $view = new View();
 
-    // récupérer $ref
-    $ref = $_GET["ref"];
-    $produit = $dao->get($ref);
-    if($produit == false){
-        $produit = "erreur";
+    // On récupère le produit si possible depuis le paramètre ref
+    if (isset($_GET["ref"])) {
+        $produit = $pDao->get($_GET["ref"]);
+    } else {
+        $produit = false;
     }
 
-    if (isset($_SESSION["user"])) {
-        $itemInCart = $uDao->getCartItem($ref, $_SESSION["user"]->getUsername());
+    // Si l'utilisateur est connecté on récupère les infos sur le produit pour
+    // voir si l'utilisateur en a déjà dans son panier
+    if (isset($_SESSION["user"]) && isset($_GET["ref"])) {
+        $itemInCart = $uDao->getCartItem($_GET["ref"], $_SESSION["user"]->getUsername());
         $isLogged = true;
     } else {
         $itemInCart = false;
