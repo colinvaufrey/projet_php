@@ -13,7 +13,7 @@
         if ($paid) {
         ?>
         <article class="paid">
-            <p>Merci de votre achat, au plaisir de vous revoir !</p>
+            <p>Merci de votre achat, au plaisir de vous revoir bientôt au pays des fruits !</p>
         </article>
         <?php
         }
