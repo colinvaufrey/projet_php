@@ -14,5 +14,5 @@
         $_SESSION["user"] = $dao->get($_SESSION["user"]->getUsername());
     }
 
-    header("Location: ../controler/cart.ctrl.php");
+    header("Location: ../controler/main.ctrl.php?paid=true");
 ?>

@@ -24,7 +24,7 @@
     $produits[] = $dao->get(7);
     $produits[] = $dao->get(9);
 
-    $paid = isset($_POST["paid"]);
+    $paid = isset($_GET["paid"]);
 
     // Passe les paramètres à la vue
     $view->assign('produits', $produits);
