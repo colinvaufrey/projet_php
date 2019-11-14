@@ -41,7 +41,7 @@
             <section>
                 <p class="prixTotal">Total des prix : <?= number_format($total, 2)?> €</p>
                 <form class="" action="../controler/empty_cart.ctrl.php" method="post">
-                    <input type="submit" name="submit" value="Valider et passer au paiement">
+                    <input type="submit" name="submit" value="Valider et payer">
                 </form>
             </section>
 
