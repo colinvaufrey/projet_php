@@ -57,7 +57,8 @@
                     <form class="addCart" action="../controler/add_to_cart.ctrl.php" method="post">
                         <!-- On utilise des input hidden pour passer les paramètres que l'utilisateur ne renter pas -->
                         <input type="hidden" name="ref" value="<?= $produit->ref ?>">
-                        <input type="number" min="1" max="<?= $itemInCart ? $produit->stock - $itemInCart->quantity : $produit->stock ?>" name="quantity" value="<?= ($produit->stock == 0) ? 0 : 1 ?>">
+                        <label for="quant">Quantité</label>
+                        <input id="quant" type="number" min="1" max="<?= $itemInCart ? $produit->stock - $itemInCart->quantity : $produit->stock ?>" name="quantity" value="<?= ($produit->stock == 0) ? 0 : 1 ?>">
                         <input type="submit" name="submit" value="Ajouter au panier">
                     </form>
                 <?php

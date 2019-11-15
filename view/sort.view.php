@@ -10,6 +10,7 @@
         <?php include("menu.view.php") ?>
 
         <article class="main">
+            <h2>Trier les résultats par couleur ou origine</h2>
             <div class="sorterContainer">
                 <form class="origin" action="../controler/sort.ctrl.php" method="get">
                     <select class="listeDer" name="origin">

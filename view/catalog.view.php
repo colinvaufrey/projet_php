@@ -10,6 +10,7 @@
         <?php include("menu.view.php") ?>
 
         <article class="main">
+            <h2>Voici tout notre catalogue de fruits !</h2>
             <section class="listeArticles">
                 <!-- Affichage de tous les produits -->
                 <?php foreach ($produits as $prod): ?>

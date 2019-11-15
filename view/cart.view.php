@@ -16,6 +16,7 @@
         ?>
 
             <article class="panier">
+                <h2>Votre panier</h2>
                 <?php
                     $total = 0;
                     // On affiche tous les produits dans le panier
@@ -36,7 +37,8 @@
                         <form class="updateForm" action="../controler/add_to_cart.ctrl.php" method="post">
                             <input type="hidden" name="ref" value="<?= $p->ref ?>">
                             <input type="hidden" name="force_update" value="true">
-                            <input type="number" name="quantity" min="0" max="<?= $p->stock ?>" value="<?= $quantity ?>">
+                            <label for="quant">Quantité</label>
+                            <input id="quant" type="number" name="quantity" min="0" max="<?= $p->stock ?>" value="<?= $quantity ?>">
                             <input type="submit" name="submit" value="Modifier la quantité">
                         </form>
                     </section>
