@@ -1,3 +1,5 @@
+.read remove.sql
+
 CREATE TABLE Products(
     ref INTEGER PRIMARY KEY,
     title STRING,

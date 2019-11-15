@@ -14,17 +14,17 @@
             <div class="sorterContainer">
                 <form class="origin" action="../controler/sort.ctrl.php" method="get">
                     <select class="listeDer" name="origin">
-                        <option value="france">France</option>
-                        <option value="espagne">Espagne</option>
-                        <option value="tchernobyl">Tchernobyl</option>
+                        <option value="France">France</option>
+                        <option value="Espagne">Espagne</option>
+                        <option value="Tchernobyl">Tchernobyl</option>
                     </select>
                     <input type="submit" name="submit" value="Trier par origine">
                 </form>
                 <form class="color" action="../controler/sort.ctrl.php" method="get">
                     <select class="listeDer" name="color">
-                        <option value="rouge">Rouge</option>
-                        <option value="orange">Orange</option>
-                        <option value="jaune">Jaune</option>
+                        <option value="Rouge">Rouge</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Jaune">Jaune</option>
                     </select>
                     <input type="submit" name="submit" value="Trier par couleur">
                 </form>
